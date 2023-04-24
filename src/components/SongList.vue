@@ -1,16 +1,36 @@
 <template>
-	<div v-for="item in list" :key="item.id" class="mb-5">
-		<p class="mb-1 text-yellow-300">{{ item.name }}</p>
-		<span class="inline-block text-gray-200 text-xs">
-			{{ item.artistName }} - <span class="text-gray-400"> {{ item.albumName }} ({{ item.year }}) </span>
-		</span>
+	<div v-if="!isPlayerVisible">
+		<div class="text-yellow-300 mb-5 font-bold uppercase text-center text-3xl mt-3">
+			{{ name }}
+		</div>
+		<div v-for="item in list" :key="item.id" class="mb-5 flex flex-row justify-between items-center cursor-pointer">
+			<div>
+				<p class="mb-1 text-yellow-300">{{ item.name }}</p>
+				<span class="inline-block text-gray-200 text-xs">
+					{{ item.artistName }} - <span class="text-gray-400"> {{ item.albumName }} ({{ item.year }}) </span>
+				</span>
+			</div>
+
+			<div>
+				<img :src="item.src" :alt="item.name" width="40" height="40" class="rounded-full" />
+			</div>
+		</div>
+	</div>
+	<div v-else>
+		<SongPlayer 
+			:song="list[currentListIndex]"
+		/>
 	</div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import SongPlayer from './SongPlayer.vue';
 
 const name = ref('Song list')
+
+const isPlayerVisible = ref(true)
+const currentListIndex = ref(0)
 
 const list = ref([
 	{

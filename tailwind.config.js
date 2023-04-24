@@ -5,6 +5,12 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+		maxHeight: {
+			'300px': '300px',
+		},
+		maxWidth: {
+			'300px': '300px',
+		},
     extend: {},
   },
   plugins: [],
