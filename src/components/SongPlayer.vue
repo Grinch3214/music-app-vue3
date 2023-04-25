@@ -1,8 +1,8 @@
 <template>
-	<!-- <audio :src="props.song.songSrc" preload="auto" autoplay ref="audioPlayer" /> -->
+	<audio :src="props.song.songSrc" preload="auto" autoplay ref="audioPlayer" />
 	<div class="text-white">
 		<div class="flex flex-row justify-between">
-			<button @click="goback">Back</button>
+			<button @click="goBack">Back</button>
 			<div class="text-yellow-300 font-bold text-1xl">VueJS Music App</div>
 		</div>
 		<div>
@@ -30,14 +30,37 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
 	song: {
 		type: Object
 	}
 })
+const audioPlayer = ref(null)
+const isPlaying = ref(true)
 
-const isPlaying = ref(false)
+const emit = defineEmits(['goBack', 'next', 'previous'])
+
+const goBack = () => {
+	emit('goBack')
+}
+
+const next = () => {
+	emit('next')
+}
+
+const previous = () => {
+	emit('previous')
+}
+
+const togglePlay = () => {
+	if(isPlaying.value) {
+		audioPlayer.value.pause()
+	} else {
+		audioPlayer.value.play()
+	}
+	isPlaying.value = !isPlaying.value
+}
 
 </script>

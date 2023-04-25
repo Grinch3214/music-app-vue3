@@ -12,5 +12,6 @@ import SongList from './components/SongList.vue';
 <style>
 .app-container {
 	max-width: 400px;
+	min-height: 600px;
 }
 </style>

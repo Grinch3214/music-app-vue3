@@ -3,7 +3,12 @@
 		<div class="text-yellow-300 mb-5 font-bold uppercase text-center text-3xl mt-3">
 			{{ name }}
 		</div>
-		<div v-for="item in list" :key="item.id" class="mb-5 flex flex-row justify-between items-center cursor-pointer">
+		<div
+		  v-for="(item, index) in list"
+		  :key="item.id"
+			@click="playSong(index)"
+		  class="mb-5 flex flex-row justify-between items-center cursor-pointer"
+		>
 			<div>
 				<p class="mb-1 text-yellow-300">{{ item.name }}</p>
 				<span class="inline-block text-gray-200 text-xs">
@@ -19,6 +24,9 @@
 	<div v-else>
 		<SongPlayer 
 			:song="list[currentListIndex]"
+			@go-back="isPlayerVisible = !isPlayerVisible"
+			@next="playNext"
+			@previous="playPrevious"
 		/>
 	</div>
 </template>
@@ -29,7 +37,7 @@ import SongPlayer from './SongPlayer.vue';
 
 const name = ref('Song list')
 
-const isPlayerVisible = ref(true)
+const isPlayerVisible = ref(false)
 const currentListIndex = ref(0)
 
 const list = ref([
@@ -62,6 +70,25 @@ const list = ref([
 	}
 ])
 
+const playSong = (index) => {
+	currentListIndex.value = index
+	isPlayerVisible.value = true
+}
+const playNext = () => {
+	if(currentListIndex.value < list.value.length - 1) {
+		currentListIndex.value += 1
+	} else {
+		currentListIndex.value = 0
+	}
+}
+
+const playPrevious = () => {
+	if(currentListIndex.value != 0) {
+		currentListIndex.value -= 1
+	} else {
+		currentListIndex.value = list.value.length - 1
+	}
+}
 </script>
 
 <style>
