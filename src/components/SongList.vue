@@ -40,7 +40,7 @@ const name = ref('Song list')
 const isPlayerVisible = ref(false)
 const currentListIndex = ref(0)
 
-const list = ref([
+const list = [
 	{
 		id: 1,
 		name: 'Сочиняй мечты',
@@ -68,14 +68,14 @@ const list = ref([
 		src: 'https://images.genius.com/37d8d643999044c1a7a73edcfeed06a8.800x800x1.jpg',
 		songSrc: 'https://cdn.drivemusic.club/dl/online/6MHi0Hdmj0Xzf13kDTwWDQ/1682374024/download_music/2021/04/kasta-feat.-monetochka-ljubojj-durak.mp3',
 	}
-])
+]
 
 const playSong = (index) => {
 	currentListIndex.value = index
 	isPlayerVisible.value = true
 }
 const playNext = () => {
-	if(currentListIndex.value < list.value.length - 1) {
+	if(currentListIndex.value < list.length - 1) {
 		currentListIndex.value += 1
 	} else {
 		currentListIndex.value = 0
@@ -86,7 +86,7 @@ const playPrevious = () => {
 	if(currentListIndex.value != 0) {
 		currentListIndex.value -= 1
 	} else {
-		currentListIndex.value = list.value.length - 1
+		currentListIndex.value = list.length - 1
 	}
 }
 </script>
