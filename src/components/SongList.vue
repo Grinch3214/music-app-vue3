@@ -32,8 +32,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import SongPlayer from './SongPlayer.vue';
+import { ref } from 'vue'
+import SongPlayer from './SongPlayer.vue'
 
 const name = ref('Song list')
 
