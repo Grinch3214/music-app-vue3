@@ -40,6 +40,8 @@ const props = defineProps({
 const audioPlayer = ref(null)
 const isPlaying = ref(true)
 
+console.log(audioPlayer.value)
+
 const emit = defineEmits(['goBack', 'next', 'previous'])
 
 const goBack = () => {
@@ -55,11 +57,7 @@ const previous = () => {
 }
 
 const togglePlay = () => {
-	if(isPlaying.value) {
-		audioPlayer.value.pause()
-	} else {
-		audioPlayer.value.play()
-	}
+	isPlaying.value ? audioPlayer.value.pause() : audioPlayer.value.play()
 	isPlaying.value = !isPlaying.value
 }
 
