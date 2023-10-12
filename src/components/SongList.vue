@@ -36,6 +36,8 @@ import { ref } from 'vue'
 import { list } from '../constants.js'
 import SongPlayer from './SongPlayer.vue'
 
+console.log(list)
+
 const name = ref('Song list')
 
 const isPlayerVisible = ref(false)
