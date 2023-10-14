@@ -10,7 +10,7 @@
 			<div class="text-center">
 				<p class="text-yellow-300 font-bold">{{ props.song.name }}</p>
 				<p class="text-gray-200">{{ props.song.artistName }} - {{ props.song.albumName }}</p>
-				<p class="text-gray-400">{{ song.year }}</p>
+				<p class="text-gray-400">{{ props.song.year }}</p>
 			</div>
 		</div>
 		<div class="grid grid-cols-3 mt-10">
