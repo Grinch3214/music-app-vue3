@@ -36,7 +36,7 @@ import { ref } from 'vue'
 import { list } from '../constants.js'
 import SongPlayer from './SongPlayer.vue'
 
-const name = ref('Song list')
+const name = 'Song list'
 
 const isPlayerVisible = ref(false)
 const currentListIndex = ref(0)
